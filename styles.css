@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-image: url(Imagenes/ba1.jpg);
+    background-position: center;
+    background-size: cover;
+    filter:contrast(40%);
+    filter: blur(10px);
+    filter: saturate(80%);
+    background-color: rgba(24, 22, 22, 0.797); 
+    background-blend-mode: soft-light;
+    height:800px;
+	width: 100%;
+	left:0;
+	top:0;
+
+ }
+ .h1{
+    text-align: center;
+ }
+.h5{
+    justify-content: center;
+}
+.hono{
+    width: 600px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 400px;
+    margin-left: 85px;
+}
+.par{
+    width: 600px;
+    background-color: grey;
+    color: white;
+    height: 400px;
+    text-align: left;
+    padding: 15px;
+    margin-right: 85px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.form{
+    width: 800px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.foot{
+    margin-bottom: 50px;
+    width: 1100px;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    text-align: center;
+}
