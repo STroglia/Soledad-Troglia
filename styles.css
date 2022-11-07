@@ -57,4 +57,136 @@
     align-items: center;
     padding-left: 30px;
     text-align: center;
+    margin-top: 40px;
+}
+.col{
+    width: 220px;
+    height: 220px;
+    align-items: center;
+    display: inline-block;
+    justify-content: center;
+    margin-left: 150px;
+}
+
+.caja1{
+    border: 5px solid blue;
+    border-width: thin;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    padding: 10px;
+    margin: 3px;
+
+}
+.caja2{
+    border: 5px solid orange;
+    border-width: thin;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    padding: 10px;
+    margin: 3px;
+}
+
+.cajas{
+    display: flex;
+    margin:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.nombres{
+    width: 1000px;
+    height: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+#nombre{
+    width: 400px;
+    height: 40px;
+    margin-bottom: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    display: inline-flex;
+    margin-left: 330px;
+    padding: 10px;
+    margin-right: 20px;
+
+}
+
+#apellido{
+    width: 400px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: inline-flex;
+    padding: 10px;
+}
+
+#correo{
+    width: 670px;
+    height: 40px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 330px;
+}
+
+.cantidad{
+    margin-left: 250px;
+}
+#cantidad{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;
+}
+#categoria{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
+#categoriaSelect{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+#pagar{
+    width: 800px;
+    height: 40px;
+    padding: 10px;
+    border-style: none;
+    background-color: lightblue;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: 250px;
+}
+#borrar{
+    width: 400px;
+    height: 40px;
+    padding: 3px;
+    text-align: center;
+    background-color: #2fffa8;
+    margin-left: 250px;
+    border-style: none;
+    color: white;
+}
+#resumen{
+    width: 400px;
+    height: 40px;
+    padding: 3px;
+    text-align: center;
+    background-color: #2fffa8;
+    border-style: none;
+    color: white;
 }
