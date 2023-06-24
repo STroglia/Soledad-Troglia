@@ -1,0 +1,137 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+
+using namespace std;
+
+struct Asistencia {
+    string DNI;
+    string nombre;
+    string apellido;
+    string carrera;
+    string materia;
+    string fecha;
+    string hora;
+    bool estado;
+};
+
+void cargarAsistencia(ofstream& archivo) {
+    Asistencia alumno;
+    cout << "Ingrese el DNI del alumno: ";
+    cin >> alumno.DNI;
+    cout << "Ingrese el nombre del alumno: ";
+    cin >> alumno.nombre;
+    cout << "Ingrese el apellido del alumno: ";
+    cin.ignore();
+    getline(cin, alumno.apellido);
+    cout << "Ingrese la carrera del alumno: ";
+    getline(cin, alumno.carrera);
+    cout << "Ingrese la materia: ";
+    getline(cin, alumno.materia);
+    cout << "Ingrese la fecha (dd/mm/aaaa): ";
+    cin >> alumno.fecha;
+    cout << "Ingrese la hora (hh:mm): ";
+    cin >> alumno.hora;
+    cout << "Ingrese el estado de la asistencia (1 para presente, 0 para ausente): ";
+    cin >> alumno.estado;
+
+    archivo << alumno.DNI << "," << alumno.nombre << "," << alumno.apellido << "," << alumno.carrera << "," << alumno.materia << "," << alumno.fecha << "," << alumno.hora << "," << (alumno.estado ? "true" : "false") << endl;
+
+    cout << "Asistencia cargada exitosamente." << endl;
+}
+
+void consultarAsistencia(ifstream& archivo) {
+    string dni, materia;
+    cout << "Ingrese el DNI del alumno: ";
+    cin >> dni;
+    cout << "Ingrese la materia: ";
+    cin.ignore();
+    getline(cin, materia);
+
+    string linea;
+    bool encontrado = false;
+    while (getline(archivo, linea)) {
+        char* campos = strtok(&linea[0], ",");
+        string registro[8];
+        int i = 0;
+        while (campos != nullptr) {
+            registro[i++] = campos;
+            campos = strtok(nullptr, ",");
+        }
+        if (registro[0] == dni && registro[4] == materia) {
+            cout << "DNI: " << registro[0] << endl;
+            cout << "Nombre: " << registro[1] << endl;
+            cout << "Apellido: " << registro[2] << endl;
+            cout << "Carrera: " << registro[3] << endl;
+            cout << "Materia: " << registro[4] << endl;
+            cout << "Fecha: " << registro[5] << endl;
+            cout << "Hora: " << registro[6] << endl;
+            cout << "Estado: " << (registro[7] == "true" ? "presente" : "ausente") << endl;
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "No se encontró asistencia para el DNI y materia especificados." << endl;
+    }
+}
+
+void listarAsistencia(ifstream& archivo) {
+    string linea;
+    while (getline(archivo, linea)) {
+        char* campos = strtok(&linea[0], ",");
+        while (campos != nullptr) {
+            cout << campos << "\t";
+            campos = strtok(nullptr, ",");
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    ofstream archivoSalida("asistencia.csv", ios::app); // Abrir el archivo en modo de agregar contenido al final
+    ifstream archivoEntrada("asistencia.csv");
+
+    if (!archivoSalida || !archivoEntrada) {
+        cout << "Error al abrir el archivo." << endl;
+        return 1;
+    }
+
+    int opcion;
+    do {
+        cout << "Menu de opciones:" << endl;
+        cout << "1. Cargar asistencia" << endl;
+        cout << "2. Consultar asistencia" << endl;
+        cout << "3. Listar asistencia" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Ingrese la opcion deseada: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cargarAsistencia(archivoSalida);
+                break;
+            case 2:
+                consultarAsistencia(archivoEntrada);
+                break;
+            case 3:
+                listarAsistencia(archivoEntrada);
+                break;
+            case 4:
+                cout << "Saliendo del programa..." << endl;
+                break;
+            default:
+                cout << "Opcion invalida. Por favor, ingrese una opcion valida." << endl;
+                break;
+        }
+
+        cout << endl;
+    } while (opcion != 4);
+
+    archivoSalida.close(); // Cerrar el archivo de salida
+    archivoEntrada.close(); // Cerrar el archivo de entrada
+
+    return 0;
+}
